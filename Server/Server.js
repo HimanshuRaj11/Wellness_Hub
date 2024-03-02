@@ -12,6 +12,14 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const corsOptions = {
+	origin: process.env.CLIENT_URL,
+	optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+	methods: ["GET,HEAD,PUT,PATCH,POST,DELETE"],
+	credentials: true,
+	preflightContinue: false,
+  };
+
 const io = require("socket.io")(server, {
 	cors: {
 		origin: "*",
@@ -21,7 +29,8 @@ const io = require("socket.io")(server, {
 	}
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -34,7 +43,8 @@ app.get('/', (req, res) => {
 const UserRouter = require("./Router/User.router.js")
 app.use('/user',UserRouter);
 
-
+const DoctorRouter = require("./Router/Doctor.router.js")
+app.use('/doctor',DoctorRouter);
 
 
 
