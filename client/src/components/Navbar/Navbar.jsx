@@ -11,7 +11,6 @@ export default function Navbar() {
     const {User:{user}} = useSelector((state) => ({ ...state.User }));
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    console.log(user);
     useEffect(()=>{
         dispatch(FetchUser())
     },[])
@@ -28,7 +27,7 @@ export default function Navbar() {
             <div className="menu">
                 <a href="/" >Home</a>
                 <a href="/about" >About Us</a>
-                <a href="find-a-doctor">Find a Doctor</a>
+                <a href="/find-a-doctor">Find a Doctor</a>
             </div>
             <div className="auth">
                 {

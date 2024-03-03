@@ -8,7 +8,7 @@ import cookies from "js-cookie"
 export const DoctorSlice = createSlice({
   name: "Doctor",
   initialState: {
-    User: {},
+    Doctor:{},
     loading: false,
     error: null,
     
@@ -21,9 +21,19 @@ export const DoctorSlice = createSlice({
       })
       .addCase(FetchDoctor.fulfilled, (state, action) => {
         state.loading = false;
-        state.User = action.payload;
+        state.Doctor = action.payload;
       })
       .addCase(FetchDoctor.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(FetchDoctorbyId.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(FetchDoctorbyId.fulfilled, (state, action) => {
+        state.loading = false;
+        state.Doctor = action.payload;
+      })
+      .addCase(FetchDoctorbyId.rejected, (state) => {
         state.loading = false;
       })
   },
@@ -57,6 +67,18 @@ try {
   return error.message;
 }
 })
+
+export const FetchDoctorbyId = createAsyncThunk("Fetch/doctorbyId", async({_id})=>{
+try {
+  const res = await axios.get(`${Server_URL}/doctor/api/v1/fetch-doctor-by-id/${_id}`, {withCredentials:true});
+  const data = res.data.Doctor;
+  console.log(data);
+  return data;
+} catch (error) {
+  return error.message;
+}
+})
+
 export const LogoutDoctor = createAsyncThunk("Logout/Doctor", async({navigate})=>{
 try {
   const res = await axios.get(`${Server_URL}/doctor/api/v1/logout-doctor`, {withCredentials:true});

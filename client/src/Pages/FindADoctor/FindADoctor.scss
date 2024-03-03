@@ -1,0 +1,118 @@
+.findadoctor {
+    .header {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .searchBox {
+
+            input[type=text] {
+                background-color: #f6f6f6;
+                border: none;
+                color: #0d0d0d;
+                padding: 5px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 5px;
+                width: 80%;
+                border: 2px solid #f6f6f6;
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+                -webkit-border-radius: 5px 5px 5px 5px;
+                border-radius: 5px 5px 5px 5px;
+            }
+
+            input[type=text]:focus {
+                background-color: #fff;
+                border-bottom: 2px solid #5fbae9;
+            }
+            .searchIcon{
+                font-size: 30px;
+                cursor: pointer;
+            }
+
+
+        }
+    }
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .Card {
+        margin: 20px;
+        width: auto;
+        height: auto;
+
+        .cardBody {
+            border-radius: 29px;
+            height: 380px;
+            width: 320px;
+            background: #e0e0e0;
+            box-shadow: 22px 22px 44px #8d8d8d,
+                -22px -22px 44px #ffffff;
+            overflow: hidden;
+
+            .img {
+                height: 70%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .details {
+                width: 100%;
+                height: 30%;
+                display: flex;
+                flex-direction: column;
+                padding: 5px;
+                position: relative;
+
+                .name{
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+                .speciliest{
+                    font-weight: 600;
+                    font-size: 18px;
+                    color: #1e6754;
+                }
+                .fee{
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                }
+                .cardBtn{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .getInTouch{
+                        padding: 5px;
+                        text-align: center;
+                        color: #fff;
+                        font-weight: 600;
+                        width: 60%;
+                        border-radius: 5px;
+                        background-color: #1e6754;
+                        cursor: pointer;
+                        
+                        &:hover{
+                            background-color: #175545;
+
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

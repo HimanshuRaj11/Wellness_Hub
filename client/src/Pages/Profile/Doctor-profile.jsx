@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { FetchDoctorbyId } from '../../Redux/Slice/Doctor.slice';
 
-export default function ProfileDoctor() {
+export default function DoctorProfilepage() {
     const dispatch = useDispatch()
-    const { User: { user } } = useSelector((state) => ({ ...state.User }));
-    
-    const {_id} = useParams()
+    // const { Doctor: { Doctor } } = useSelector((state) => ({ ...state.Doctor }));
+    const { Doctor} = useSelector((state) => ({ ...state.Doctor }));
 
+    const {_id} = useParams()
     useEffect(()=>{
         dispatch(FetchDoctorbyId({_id}))
     },[])
@@ -24,10 +24,10 @@ export default function ProfileDoctor() {
                             </div>
                             <div class="col-md-7 animated bounceInRight homexp">
                                 <h5>Hello I'm</h5>
-                                <h2>{user?.name}</h2><br />
-                                <span>Professional <a> {user?.speciliest}</a> </span>
+                                <h2>{Doctor?.name}</h2><br />
+                                <span>Professional <a> {Doctor?.speciliest}</a> </span>
                                 <p>
-                                    { user?.bio}
+                                    { Doctor?.bio}
                                 </p>
 
                                 <ul class="socil-icon">
@@ -61,7 +61,7 @@ export default function ProfileDoctor() {
                 <div class="container">
                     <div class="session-title row">
                         <h2>About Me</h2>
-                        <p>{user?.bio}</p>
+                        <p>{Doctor?.bio}</p>
                         <div class="heading-line"></div>
                     </div>
                     <div class="about-row row">
@@ -70,27 +70,27 @@ export default function ProfileDoctor() {
                             {/* <button class="btn btn-primary"><i class="fas fa-download"></i> Download</button> */}
                         </div>
                         <div class="detail-col col-md-8">
-                            <h2>{user?.name}</h2>
+                            <h2>{Doctor?.name}</h2>
                             <h6></h6>
-                            <p>{user?.bio}</p>
+                            <p>{Doctor?.bio}</p>
                             <div class="row">
                                 <div class="col-md-6 col-12">
                                     <div class="info-list">
                                         <ul>
                                             <li><span>Birthday:</span>05. 09.1987</li>
-                                            <li><span>City:</span>{user?.address}</li>
-                                            <li><span>Study:</span>{user?.study}</li>
-                                            <li><span>Website:</span>{user?.website}</li>
+                                            <li><span>City:</span>{Doctor?.address}</li>
+                                            <li><span>Study:</span>{Doctor?.study}</li>
+                                            <li><span>Website:</span>{Doctor?.website}</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <div class="info-list">
                                         <ul>
-                                            <li><span>Age:</span>{user?.age} Years</li>
-                                            <li><span>Degree:</span>{user?.degree}</li>
-                                            <li><span>Mail:</span>{user?.email}</li>
-                                            <li><span>Phone:</span>{user?.phone}</li>
+                                            <li><span>Age:</span>{Doctor?.age} Years</li>
+                                            <li><span>Degree:</span>{Doctor?.degree}</li>
+                                            <li><span>Mail:</span>{Doctor?.email}</li>
+                                            <li><span>Phone:</span>{Doctor?.phone}</li>
                                         </ul>
                                     </div>
                                 </div>

@@ -83,3 +83,25 @@ exports.FetchDoctor = async(req, res)=>{
         return res.status(503).json({ message: error.message })
     }
 }
+
+exports.fetchAllDoctors= async(req, res) =>{
+    try {
+        const Doctors = await DoctorSchema.find({});
+        return res.status(200).json({Doctors});
+    } catch (error) {
+        return res.status(503).json({ message: error.message })
+    }
+}
+
+exports.fetchDoctorbyId = async(req, res)=>{
+    try {
+        const {_id} = req.params;
+        await DoctorSchema.findById({_id}).then((Doctor)=>{
+            return res.status(200).json({Doctor});
+        })
+        
+    } catch (error) {
+        console.log(error.message);
+        return res.status(503).json({ message: error.message })
+    }
+}
